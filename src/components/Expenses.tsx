@@ -444,7 +444,7 @@ const Expenses: React.FC = () => {
             .from('employee_balance_transactions')
             .insert([{
               user_id: createdById,
-              amount: -parseFloat(formData.amount), // سالب للخصم
+              amount: -expenseData.amount, // سالب للخصم
               type: 'debit',
               reason: `مصروف: ${formData.description}`,
               related_expense_id: expenseResult.id,
@@ -455,7 +455,11 @@ const Expenses: React.FC = () => {
           if (balanceError) {
             console.error('⚠️ Error deducting from balance:', balanceError);
             // حذف المصروف إذا فشل الخصم من العهدة
-            await supabase.from('expenses').delete().eq('id', expenseResult.id);
+            try {
+              await supabase.from('expenses').delete().eq('id', expenseResult.id);
+            } catch (deleteError) {
+              console.error('⚠️ Error rolling back expense:', deleteError);
+            }
             throw new Error('فشل في خصم المبلغ من العهدة');
           } else {
             console.log('✅ Amount deducted from employee balance');
