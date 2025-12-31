@@ -1,19 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { DateInput } from './DateInput';
 import { Plus, CreditCard as Edit, Trash2, Calendar, DollarSign, Tag, FileText, TrendingUp, Search, Download, List } from 'lucide-react';
-import { DateInput } from './DateInput';
 import { supabase } from '../lib/supabase';
-import { DateInput } from './DateInput';
 import { authService } from '../lib/auth';
-import { DateInput } from './DateInput';
 import ExcelJS from 'exceljs';
-import { DateInput } from './DateInput';
 import { saveAs } from 'file-saver';
-import { DateInput } from './DateInput';
 import html2canvas from 'html2canvas';
-import { DateInput } from './DateInput';
 import jsPDF from 'jspdf';
-import { DateInput } from './DateInput';
 
 interface Expense {
   id: string;
@@ -442,22 +434,23 @@ const Expenses: React.FC = () => {
           .insert([expenseToInsert])
           .select()
           .single();
-        
+
         if (expenseError) throw expenseError;
 
-        // خصم المبلغ من عهدة الموظف
-        if (createdById && expenseResult) {
+        // خصم المبلغ من عهدة الموظف فقط إذا كان المستخدم موظفاً (ليس مديراً)
+        // للمدير: يتم حفظ المصروف كمصروف عام للشركة دون المساس بأي عهدة شخصية
+        if (createdById && expenseResult && currentUser?.role === 'user') {
           const { error: balanceError } = await supabase
             .from('employee_balance_transactions')
             .insert([{
-              employee_id: createdById,
+              user_id: createdById,
               amount: -parseFloat(formData.amount), // سالب للخصم
               type: 'debit',
               reason: `مصروف: ${formData.description}`,
               related_expense_id: expenseResult.id,
-              date: formData.date || new Date().toISOString()
+              transaction_date: formData.date || new Date().toISOString()
             }]);
-          
+
           if (balanceError) {
             console.error('⚠️ Error deducting from balance:', balanceError);
             // لا نرمي الخطأ لأن المصروف تم إضافته بنجاح
