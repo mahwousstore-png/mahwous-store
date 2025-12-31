@@ -108,6 +108,12 @@ function App() {
   const filteredMenuItems = menuItems.filter(item => {
     const permKey = getPermissionKey(item.id);
     if (!permKey || !currentUser?.permissions) return false;
+
+    // إخفاء صفحة المصروفات عن الموظفين - تظهر فقط للمدير
+    if (item.id === 'expenses' && currentUser?.role === 'user') {
+      return false;
+    }
+
     return currentUser.permissions[permKey] === true;
   });
 

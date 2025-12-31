@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { DateInput } from './DateInput';
 import {
-  ArrowLeft, Banknote, Receipt, Trash2, User, AlertCircle, Users, X, CheckCircle, Download, FileText, TrendingUp, DollarSign
+  ArrowLeft, Banknote, Receipt, Trash2, User, AlertCircle, Users, X, CheckCircle, Download, FileText, TrendingUp, DollarSign, Tag, Plus
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { DateInput } from './DateInput';
 import { authService } from '../lib/auth';
-import { DateInput } from './DateInput';
 import toast, { Toaster } from 'react-hot-toast';
-import { DateInput } from './DateInput';
 import ExcelJS from 'exceljs';
-import { DateInput } from './DateInput';
 import { saveAs } from 'file-saver';
-import { DateInput } from './DateInput';
 import html2canvas from 'html2canvas';
-import { DateInput } from './DateInput';
 import jsPDF from 'jspdf';
-import { DateInput } from './DateInput';
 
 interface UserProfile {
   id: string;
@@ -44,6 +36,12 @@ interface EmployeeSummary {
   transactions: EmployeeBalanceTransaction[];
 }
 
+interface Category {
+  id: string;
+  name: string;
+  created_at?: string;
+}
+
 const EmployeeAdvances: React.FC = () => {
   const [employees, setEmployees] = useState<EmployeeSummary[]>([]);
   const [selectedEmployee, setSelectedEmployee] = useState<EmployeeSummary | null>(null);
@@ -59,11 +57,34 @@ const EmployeeAdvances: React.FC = () => {
   const [transactionType, setTransactionType] = useState<'credit' | 'debit'>('credit');
   const [transactionReason, setTransactionReason] = useState<string>('');
 
+  // نموذج مصروف الموظف
+  const [showExpenseModal, setShowExpenseModal] = useState(false);
+  const [expenseAmount, setExpenseAmount] = useState<string>('');
+  const [expenseCategory, setExpenseCategory] = useState<string>('');
+  const [expenseDescription, setExpenseDescription] = useState<string>('');
+  const [expenseDate, setExpenseDate] = useState<string>(new Date().toISOString().split('T')[0]);
+  const [categories, setCategories] = useState<Category[]>([]);
+
   const currentUser = authService.getCurrentUser();
 
   useEffect(() => {
     fetchEmployeesData();
+    fetchCategories();
   }, []);
+
+  // جلب فئات المصروفات
+  const fetchCategories = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('categories')
+        .select('*')
+        .order('name', { ascending: true });
+      if (error) throw error;
+      setCategories(data || []);
+    } catch (err) {
+      console.error('Error fetching categories:', err);
+    }
+  };
 
   const fetchEmployeesData = async () => {
     setLoading(true);
@@ -232,6 +253,73 @@ const EmployeeAdvances: React.FC = () => {
     setTransactionReason('');
     setTransactionDate(new Date().toISOString().split('T')[0]);
     setTransactionType('credit');
+  };
+
+  // إضافة مصروف من قبل الموظف - يتم تحديث جدول المصروفات وجدول العهدة في عملية واحدة
+  const handleEmployeeExpense = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!currentUser || !expenseAmount || !expenseCategory || !expenseDescription) {
+      toast.error('يرجى ملء جميع الحقول المطلوبة');
+      return;
+    }
+
+    const amount = parseFloat(expenseAmount);
+    if (isNaN(amount) || amount <= 0) {
+      toast.error('المبلغ يجب أن يكون رقمًا موجبًا');
+      return;
+    }
+
+    try {
+      // 1. إضافة المصروف في جدول المصروفات
+      const { data: expenseResult, error: expenseError } = await supabase
+        .from('expenses')
+        .insert([{
+          description: expenseDescription,
+          amount: amount,
+          category: expenseCategory,
+          date: expenseDate,
+          created_by: currentUser.full_name || currentUser.email || 'غير معروف'
+        }])
+        .select()
+        .single();
+
+      if (expenseError) throw expenseError;
+
+      // 2. خصم المبلغ من عهدة الموظف
+      const { error: balanceError } = await supabase
+        .from('employee_balance_transactions')
+        .insert([{
+          user_id: currentUser.id,
+          amount: -amount, // سالب للخصم
+          type: 'debit',
+          reason: `مصروف: ${expenseDescription}`,
+          related_expense_id: expenseResult.id,
+          transaction_date: expenseDate,
+          created_by: currentUser.id
+        }]);
+
+      if (balanceError) {
+        console.error('Error deducting from balance:', balanceError);
+        // حذف المصروف إذا فشل الخصم
+        await supabase.from('expenses').delete().eq('id', expenseResult.id);
+        throw new Error('فشل في خصم المبلغ من العهدة');
+      }
+
+      // إعادة تحميل البيانات لتحديث الرصيد
+      await fetchEmployeesData();
+
+      // إغلاق النموذج وتفريغ الحقول
+      setShowExpenseModal(false);
+      setExpenseAmount('');
+      setExpenseCategory('');
+      setExpenseDescription('');
+      setExpenseDate(new Date().toISOString().split('T')[0]);
+
+      toast.success('تم إضافة المصروف وخصمه من العهدة بنجاح');
+    } catch (err: any) {
+      console.error('خطأ في إضافة المصروف:', err);
+      toast.error(err.message || 'فشل إضافة المصروف');
+    }
   };
 
   const formatCurrency = (v: number): string => {
@@ -705,6 +793,197 @@ const EmployeeAdvances: React.FC = () => {
   }
 
   // الصفحة الرئيسية - قائمة الموظفين
+  // للموظف: عرض واجهة مبسطة مع نموذج إضافة مصروف
+  // للمدير: عرض قائمة جميع الموظفين
+  if (currentUser?.role === 'user') {
+    // البحث عن بيانات الموظف الحالي
+    const currentEmployeeData = employees.find(emp => emp.user.id === currentUser.id);
+
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Toaster position="top-center" reverseOrder={false} />
+        <div className="p-3 md:p-6 max-w-4xl mx-auto">
+          <div className="mb-6 md:mb-10 text-center">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-2 md:mb-3">عهدتي</h2>
+            <p className="text-gray-600 text-sm md:text-lg">إدارة المصروفات من عهدتك الشخصية</p>
+          </div>
+
+          {/* بطاقة الرصيد الحالي */}
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-200 rounded-xl md:rounded-2xl p-6 md:p-8 mb-6 md:mb-8 shadow-lg">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="flex items-center">
+                <div className="h-14 w-14 md:h-16 md:w-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl shadow-md ml-4 flex items-center justify-center">
+                  <User className="h-8 w-8 md:h-9 md:w-9 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900">{currentUser.full_name}</h3>
+                  <p className="text-gray-600 text-sm md:text-base">{currentUser.email}</p>
+                </div>
+              </div>
+              <div className="text-center md:text-right">
+                <p className="text-gray-600 text-sm mb-1">رصيد العهدة الحالي</p>
+                <p className={`text-3xl md:text-4xl font-extrabold ${(currentEmployeeData?.current_balance || 0) >= 0 ? 'text-amber-600' : 'text-red-600'}`}>
+                  {formatCurrency(currentEmployeeData?.current_balance || 0)}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* زر إضافة مصروف */}
+          <div className="flex justify-center mb-6 md:mb-8">
+            <button
+              onClick={() => setShowExpenseModal(true)}
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-xl hover:from-blue-700 hover:to-indigo-700 flex items-center space-x-3 space-x-reverse shadow-lg transition-all text-base md:text-lg font-bold"
+            >
+              <Plus className="h-5 w-5 md:h-6 md:w-6" />
+              <span>إضافة مصروف جديد</span>
+            </button>
+          </div>
+
+          {/* سجل العمليات */}
+          {currentEmployeeData && currentEmployeeData.transactions.length > 0 && (
+            <div className="bg-white border border-gray-200 rounded-xl md:rounded-2xl p-4 md:p-6 shadow-sm">
+              <h3 className="text-base md:text-xl font-bold text-gray-800 mb-4 md:mb-5 flex items-center">
+                <Receipt className="h-5 w-5 md:h-6 md:w-6 ml-2 text-amber-600" />
+                سجل العمليات ({currentEmployeeData.transactions.length})
+              </h3>
+              <div className="space-y-2 md:space-y-3 max-h-96 overflow-y-auto">
+                {currentEmployeeData.transactions.map(t => (
+                  <div key={t.id} className={`rounded-lg md:rounded-xl p-3 md:p-4 shadow-sm ${t.type === 'credit'
+                    ? 'bg-gradient-to-r from-amber-50 to-yellow-50'
+                    : 'bg-gradient-to-r from-red-50 to-rose-50'
+                    }`}>
+                    <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
+                      <div className="flex-1 w-full">
+                        <div className="flex flex-wrap items-center gap-2 mb-1">
+                          <span className={`font-bold text-xs md:text-sm ${t.type === 'credit' ? 'text-amber-800' : 'text-red-800'}`}>
+                            {t.type === 'credit' ? 'صرف عهدة' : 'مصروف'}
+                          </span>
+                          <span className="font-mono text-xs bg-gray-100 text-gray-700 px-2 py-0.5 rounded">
+                            #{t.id.slice(-6)}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-600">{formatDate(t.transaction_date)}</p>
+                        {t.reason && (
+                          <p className="text-xs text-gray-700 mt-1 italic">"{t.reason}"</p>
+                        )}
+                      </div>
+                      <div className="text-right sm:mr-3 w-full sm:w-auto">
+                        <p className={`font-bold text-base md:text-lg ${t.type === 'credit' ? 'text-amber-600' : 'text-red-600'}`}>
+                          {t.type === 'debit' && '-'}
+                          {formatCurrency(Math.abs(t.amount))}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* نافذة إضافة مصروف للموظف */}
+          {showExpenseModal && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+              <div className="bg-white rounded-2xl p-6 md:p-8 max-w-lg w-full shadow-2xl">
+                <div className="flex justify-between items-center mb-6 border-b border-gray-200 pb-4">
+                  <div className="flex items-center space-x-2 space-x-reverse">
+                    <DollarSign className="h-6 w-6 text-blue-600" />
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900">إضافة مصروف جديد</h3>
+                  </div>
+                  <button
+                    onClick={() => setShowExpenseModal(false)}
+                    className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+                  >
+                    <X className="h-7 w-7" />
+                  </button>
+                </div>
+                <form onSubmit={handleEmployeeExpense} className="space-y-5">
+                  <div>
+                    <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center space-x-2 space-x-reverse">
+                      <DollarSign className="h-4 w-4 text-gray-500" />
+                      <span>المبلغ</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        required
+                        value={expenseAmount}
+                        onChange={(e) => setExpenseAmount(e.target.value)}
+                        className="w-full px-4 py-3 pr-12 border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500 focus:border-blue-500 text-lg"
+                        placeholder="0.00"
+                      />
+                      <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-bold">ر.س</span>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center space-x-2 space-x-reverse">
+                      <Tag className="h-4 w-4 text-gray-500" />
+                      <span>الفئة</span>
+                    </label>
+                    <select
+                      required
+                      value={expenseCategory}
+                      onChange={(e) => setExpenseCategory(e.target.value)}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      <option value="">اختر الفئة</option>
+                      {categories.map(cat => (
+                        <option key={cat.id} value={cat.name}>{cat.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center space-x-2 space-x-reverse">
+                      <FileText className="h-4 w-4 text-gray-500" />
+                      <span>البيان / الوصف</span>
+                    </label>
+                    <textarea
+                      required
+                      value={expenseDescription}
+                      onChange={(e) => setExpenseDescription(e.target.value)}
+                      rows={2}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="أدخل وصف المصروف..."
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-gray-700 mb-2">تاريخ المصروف</label>
+                    <input
+                      type="date"
+                      required
+                      value={expenseDate}
+                      onChange={(e) => setExpenseDate(e.target.value)}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                  <div className="flex gap-4 pt-4 border-t border-gray-200">
+                    <button
+                      type="submit"
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-xl hover:from-blue-700 hover:to-indigo-700 font-bold flex items-center justify-center space-x-2 space-x-reverse shadow-md"
+                    >
+                      <CheckCircle className="h-5 w-5" />
+                      <span>حفظ المصروف</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setShowExpenseModal(false)}
+                      className="flex-1 bg-gray-200 text-gray-700 py-3 px-6 rounded-xl hover:bg-gray-300 font-bold"
+                    >
+                      إلغاء
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  // واجهة المدير - عرض قائمة جميع الموظفين
   return (
     <div className="min-h-screen bg-gray-50">
       <Toaster position="top-center" reverseOrder={false} />
