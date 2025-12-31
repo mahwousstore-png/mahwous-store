@@ -448,12 +448,15 @@ const Expenses: React.FC = () => {
               type: 'debit',
               reason: `مصروف: ${formData.description}`,
               related_expense_id: expenseResult.id,
-              transaction_date: formData.date || new Date().toISOString()
+              transaction_date: formData.date || new Date().toISOString(),
+              created_by: createdById
             }]);
 
           if (balanceError) {
             console.error('⚠️ Error deducting from balance:', balanceError);
-            // لا نرمي الخطأ لأن المصروف تم إضافته بنجاح
+            // حذف المصروف إذا فشل الخصم من العهدة
+            await supabase.from('expenses').delete().eq('id', expenseResult.id);
+            throw new Error('فشل في خصم المبلغ من العهدة');
           } else {
             console.log('✅ Amount deducted from employee balance');
           }
