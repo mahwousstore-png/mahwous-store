@@ -419,9 +419,11 @@ const Expenses: React.FC = () => {
         console.log('🔍 Current User:', currentUser);
 
         let createdBy = 'غير معروف';
+        let createdById = null;
 
         if (currentUser) {
           createdBy = currentUser.full_name || currentUser.email || 'غير معروف';
+          createdById = currentUser.id;
           console.log('📝 Final created_by value:', createdBy);
         } else {
           console.log('⚠️ No current user found');
@@ -434,10 +436,35 @@ const Expenses: React.FC = () => {
 
         console.log('💾 Inserting expense:', expenseToInsert);
 
-        const { error } = await supabase
+        // إضافة المصروف
+        const { data: expenseResult, error: expenseError } = await supabase
           .from('expenses')
-          .insert([expenseToInsert]);
-        if (error) throw error;
+          .insert([expenseToInsert])
+          .select()
+          .single();
+        
+        if (expenseError) throw expenseError;
+
+        // خصم المبلغ من عهدة الموظف
+        if (createdById && expenseResult) {
+          const { error: balanceError } = await supabase
+            .from('employee_balance_transactions')
+            .insert([{
+              employee_id: createdById,
+              amount: -parseFloat(formData.amount), // سالب للخصم
+              type: 'debit',
+              reason: `مصروف: ${formData.description}`,
+              related_expense_id: expenseResult.id,
+              date: formData.date || new Date().toISOString()
+            }]);
+          
+          if (balanceError) {
+            console.error('⚠️ Error deducting from balance:', balanceError);
+            // لا نرمي الخطأ لأن المصروف تم إضافته بنجاح
+          } else {
+            console.log('✅ Amount deducted from employee balance');
+          }
+        }
       }
       await fetchExpenses();
       setFormData({
