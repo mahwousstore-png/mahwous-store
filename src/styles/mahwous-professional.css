@@ -1,0 +1,479 @@
+/* ===================================
+   نظام مهووس الاحترافي - Wealth Management Style
+   الأسود والذهبي للمحاسبة الفاخرة
+   =================================== */
+
+:root {
+  /* الألوان الأساسية */
+  --black-primary: #000000;
+  --black-soft: #0a0a0a;
+  --black-table: #121212;
+  --gray-dark: #1F1F1F;
+  --gray-medium: #2a2a2a;
+  --gray-light: #3a3a3a;
+  --gray-border: #2d2d2d;
+  
+  /* الذهبي */
+  --gold-primary: #D4AF37;
+  --gold-light: #F4D03F;
+  --gold-dark: #B8941F;
+  --gold-subtle: #C5A028;
+  
+  /* الأبيض */
+  --white-primary: #FFFFFF;
+  --white-soft: #F5F5F5;
+  --gray-text: #CCCCCC;
+  
+  /* الألوان الوظيفية (هادئة) */
+  --green-profit: #10B981;
+  --green-profit-bg: rgba(16, 185, 129, 0.1);
+  --red-loss: #EF4444;
+  --red-loss-bg: rgba(239, 68, 68, 0.1);
+  --orange-warning: #F59E0B;
+  --blue-info: #3B82F6;
+  
+  /* التدرجات */
+  --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+  --gradient-gold-hover: linear-gradient(135deg, #F4D03F 0%, #FFE55C 100%);
+}
+
+/* === الخلفية الرئيسية === */
+body {
+  background-color: var(--black-soft) !important;
+  color: var(--white-primary) !important;
+  font-family: 'Inter', 'Segoe UI', -apple-system, sans-serif;
+}
+
+/* === بطاقات KPI (الملخصات المالية) === */
+.card,
+[class*="card"],
+.kpi-card,
+.summary-card {
+  background-color: var(--gray-dark) !important;
+  border: 1px solid var(--gray-border) !important;
+  border-radius: 12px !important;
+  padding: 1.5rem !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+.card:hover {
+  background-color: var(--gray-medium) !important;
+  border-color: var(--gold-subtle) !important;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2) !important;
+  transform: translateY(-2px);
+}
+
+/* الأرقام الكبيرة في البطاقات */
+.card .amount,
+.card .value,
+.card h2,
+.card [class*="text-2xl"],
+.card [class*="text-3xl"],
+.card [class*="text-4xl"] {
+  color: var(--gold-light) !important;
+  font-weight: 700 !important;
+  font-size: 2.25rem !important;
+  letter-spacing: -0.02em;
+}
+
+/* العناوين في البطاقات */
+.card .title,
+.card h3,
+.card h4,
+.card p:first-child {
+  color: var(--gray-text) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+/* === الجداول (أهم جزء) === */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--black-table) !important;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* رأس الجدول */
+thead {
+  background-color: var(--gray-dark) !important;
+}
+
+thead th {
+  background-color: var(--gray-dark) !important;
+  color: var(--gold-subtle) !important;
+  padding: 1rem 1.25rem !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--gold-primary) !important;
+  text-align: right !important;
+}
+
+/* جسم الجدول */
+tbody {
+  background-color: var(--black-table) !important;
+}
+
+tbody tr {
+  background-color: var(--black-table) !important;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid var(--gray-border);
+}
+
+tbody tr:hover {
+  background-color: var(--gray-dark) !important;
+  box-shadow: inset 4px 0 0 var(--gold-primary);
+}
+
+tbody td {
+  padding: 1rem 1.25rem !important;
+  color: var(--white-primary) !important;
+  font-size: 0.9375rem !important;
+  font-weight: 400;
+}
+
+/* الأرقام في الجداول */
+tbody td.amount,
+tbody td[class*="number"],
+tbody td:last-child {
+  font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+  font-weight: 500;
+  direction: ltr;
+  text-align: left;
+}
+
+/* === الألوان الوظيفية في الجداول === */
+.profit,
+.positive,
+.credit,
+[class*="text-green"] {
+  color: var(--green-profit) !important;
+  font-weight: 600;
+}
+
+.loss,
+.negative,
+.debit,
+[class*="text-red"] {
+  color: var(--red-loss) !important;
+  font-weight: 600;
+}
+
+.total,
+.sum,
+.balance {
+  color: var(--gold-light) !important;
+  font-weight: 700 !important;
+  font-size: 1.05em !important;
+}
+
+/* خلفيات للصفوف الخاصة */
+tr.profit-row {
+  background-color: var(--green-profit-bg) !important;
+}
+
+tr.loss-row {
+  background-color: var(--red-loss-bg) !important;
+}
+
+tr.total-row {
+  background-color: var(--gray-dark) !important;
+  font-weight: 700;
+  border-top: 2px solid var(--gold-primary) !important;
+}
+
+/* === الأزرار === */
+button,
+.btn,
+[type="button"],
+[type="submit"] {
+  background: var(--gradient-gold) !important;
+  color: var(--black-primary) !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 8px !important;
+  font-size: 0.9375rem !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3) !important;
+}
+
+button:hover:not(:disabled) {
+  background: var(--gradient-gold-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(244, 208, 63, 0.5) !important;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* الأزرار الثانوية */
+button.secondary,
+button[class*="gray"] {
+  background: var(--gray-medium) !important;
+  color: var(--white-primary) !important;
+  border: 1px solid var(--gray-border) !important;
+}
+
+button.secondary:hover {
+  background: var(--gray-light) !important;
+  border-color: var(--gold-subtle) !important;
+}
+
+/* أزرار الخطر */
+button.danger,
+button[class*="red"] {
+  background: var(--red-loss) !important;
+  color: var(--white-primary) !important;
+}
+
+button:disabled {
+  background: var(--gray-medium) !important;
+  color: var(--gray-text) !important;
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+}
+
+/* === القائمة الجانبية === */
+aside,
+nav,
+.sidebar {
+  background-color: var(--black-primary) !important;
+  border-right: 1px solid var(--gray-border) !important;
+}
+
+aside button,
+nav button {
+  background: transparent !important;
+  color: var(--gray-text) !important;
+  border: none !important;
+  padding: 0.875rem 1.25rem !important;
+  margin: 0.25rem 0.5rem !important;
+  border-radius: 8px !important;
+  transition: all 0.2s !important;
+  text-align: right;
+  width: calc(100% - 1rem);
+}
+
+aside button:hover {
+  background: var(--gray-dark) !important;
+  color: var(--white-primary) !important;
+}
+
+aside button.active,
+aside button[aria-current="true"] {
+  background: var(--gradient-gold) !important;
+  color: var(--black-primary) !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* === النماذج === */
+input,
+select,
+textarea {
+  background-color: var(--gray-dark) !important;
+  border: 1px solid var(--gray-border) !important;
+  color: var(--white-primary) !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  font-size: 0.9375rem !important;
+  transition: all 0.2s !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border-color: var(--gold-primary) !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15) !important;
+  background-color: var(--gray-medium) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--gray-text) !important;
+  opacity: 0.6;
+}
+
+/* === الشارات === */
+.badge,
+span[class*="badge"] {
+  padding: 0.375rem 0.875rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge.success {
+  background-color: var(--green-profit-bg) !important;
+  color: var(--green-profit) !important;
+  border: 1px solid var(--green-profit);
+}
+
+.badge.danger {
+  background-color: var(--red-loss-bg) !important;
+  color: var(--red-loss) !important;
+  border: 1px solid var(--red-loss);
+}
+
+.badge.warning {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  color: var(--orange-warning) !important;
+  border: 1px solid var(--orange-warning);
+}
+
+.badge.info {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+  color: var(--blue-info) !important;
+  border: 1px solid var(--blue-info);
+}
+
+/* === العناوين === */
+h1 {
+  color: var(--gold-light) !important;
+  font-weight: 700 !important;
+  font-size: 2rem !important;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  color: var(--gold-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+}
+
+h3 {
+  color: var(--white-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+}
+
+/* === الروابط === */
+a {
+  color: var(--blue-info) !important;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--gold-light) !important;
+  text-decoration: underline;
+}
+
+/* === شريط التمرير === */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-light);
+}
+
+/* === التحديد === */
+::selection {
+  background-color: var(--gold-primary) !important;
+  color: var(--black-primary) !important;
+}
+
+/* === تحسينات الجوال === */
+@media (max-width: 768px) {
+  .card .amount,
+  .card .value {
+    font-size: 1.875rem !important;
+  }
+  
+  button {
+    min-height: 48px !important;
+    font-size: 1rem !important;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  thead th,
+  tbody td {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* === الرسوم المتحركة === */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading {
+  background: linear-gradient(
+    90deg,
+    var(--gray-dark) 0%,
+    var(--gray-medium) 50%,
+    var(--gray-dark) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* === Modal/Dialog === */
+.modal,
+[role="dialog"] {
+  background-color: var(--gray-dark) !important;
+  border: 2px solid var(--gold-primary) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
+}
+
+.modal-overlay,
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* === تجاوز Tailwind === */
+.bg-white {
+  background-color: var(--gray-dark) !important;
+}
+
+.bg-gray-50,
+.bg-gray-100 {
+  background-color: var(--gray-medium) !important;
+}
+
+.text-gray-900,
+.text-black {
+  color: var(--white-primary) !important;
+}
+
+.text-gray-600,
+.text-gray-700 {
+  color: var(--gray-text) !important;
+}

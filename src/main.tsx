@@ -5,7 +5,7 @@ import './index.css';
 import './styles/mahwous-pro-theme.css';
 import './styles/responsive.css';
 import './styles/enhanced-theme.css';
-import './styles/mahwous-final-colors.css';
+import './styles/mahwous-professional.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
