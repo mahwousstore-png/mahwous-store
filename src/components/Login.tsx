@@ -24,53 +24,27 @@ export default function Login({ onLogin }: LoginProps) {
     setIsLoading(true);
 
     try {
-      // محاولة تسجيل الدخول عبر Supabase Auth
-      const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (authError) {
-        // إذا فشل تسجيل الدخول، نتحقق من قاعدة البيانات مباشرة (للتطوير)
-        // في الإنتاج، يجب استخدام Supabase Auth فقط
-        
-        // تسجيل دخول تجريبي للتطوير
-        if (email === 'admin@mahwous.com' && password === 'admin123') {
-          onLogin({
-            name: 'مدير النظام',
-            email: 'admin@mahwous.com',
-            role: 'admin',
-          });
-          toast.success('مرحباً بك مدير النظام! 👑');
-          return;
-        } else if (email === 'employee@mahwous.com' && password === 'emp123') {
-          onLogin({
-            name: 'موظف',
-            email: 'employee@mahwous.com',
-            role: 'employee',
-          });
-          toast.success('مرحباً بك! 👋');
-          return;
-        } else {
-          toast.error('البريد الإلكتروني أو كلمة المرور غير صحيحة');
-          return;
-        }
+      // التحقق من بيانات الاعتماد الحقيقية
+      if (email === 'admin@mahwous.com' && password === '778899') {
+        onLogin({
+          name: 'مدير النظام',
+          email: 'admin@mahwous.com',
+          role: 'admin',
+        });
+        toast.success('مرحباً بك مدير النظام! 👑');
+        return;
+      } else if (email === 'mahwosaamed@gmail.com' && password === '772350352') {
+        onLogin({
+          name: 'أحمد - موظف',
+          email: 'mahwosaamed@gmail.com',
+          role: 'employee',
+        });
+        toast.success('مرحباً بك أحمد! 👋');
+        return;
+      } else {
+        toast.error('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+        return;
       }
-
-      // إذا نجح تسجيل الدخول، نحصل على بيانات المستخدم
-      const user = authData.user;
-      
-      // نحصل على role من metadata أو من جدول users
-      const role = (user.user_metadata?.role as 'admin' | 'employee') || 'employee';
-      const name = user.user_metadata?.name || user.email?.split('@')[0] || 'مستخدم';
-
-      onLogin({
-        name,
-        email: user.email || '',
-        role,
-      });
-
-      toast.success(`مرحباً بك ${name}! 👋`);
     } catch (error) {
       console.error('خطأ في تسجيل الدخول:', error);
       toast.error('حدث خطأ أثناء تسجيل الدخول');
@@ -164,15 +138,17 @@ export default function Login({ onLogin }: LoginProps) {
 
           {/* Demo Credentials */}
           <div className="mt-6 pt-6 border-t border-[rgba(212,175,55,0.2)]">
-            <p className="text-[#707070] text-sm text-center mb-3">حسابات تجريبية:</p>
+            <p className="text-[#707070] text-sm text-center mb-3">حسابات النظام:</p>
             <div className="space-y-2 text-xs">
               <div className="bg-[#1A1A1A] p-3 rounded-lg">
                 <p className="text-[#D4AF37] font-medium mb-1">👑 مدير النظام</p>
-                <p className="text-[#B0B0B0]">admin@mahwous.com / admin123</p>
+                <p className="text-[#B0B0B0]">admin@mahwous.com</p>
+                <p className="text-[#B0B0B0]">كلمة السر: 778899</p>
               </div>
               <div className="bg-[#1A1A1A] p-3 rounded-lg">
                 <p className="text-[#D4AF37] font-medium mb-1">👤 موظف</p>
-                <p className="text-[#B0B0B0]">employee@mahwous.com / emp123</p>
+                <p className="text-[#B0B0B0]">mahwosaamed@gmail.com</p>
+                <p className="text-[#B0B0B0]">كلمة السر: 772350352</p>
               </div>
             </div>
           </div>
