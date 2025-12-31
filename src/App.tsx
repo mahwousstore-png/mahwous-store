@@ -31,6 +31,7 @@ import CustomReports from './components/CustomReports';
 import Suppliers from './components/Suppliers';
 import PaymentMethodsDashboard from './components/PaymentMethodsDashboard';
 import EmployeeBalances from './components/EmployeeBalances';
+import BalanceAudit from './components/BalanceAudit';
 import UserManagement from './components/UserManagement';
 import LoginPage from './components/LoginPage';
 
@@ -61,6 +62,7 @@ function App() {
     { id: 'shipping-companies', label: 'شركات الشحن', icon: Truck, category: 'financial' },
     { id: 'payment-methods', label: 'طرق الدفع', icon: CreditCard, category: 'financial' },
     { id: 'employee-balances', label: 'أرصدة الموظفين', icon: Wallet, category: 'financial' },
+    { id: 'balance-audit', label: 'فحص حسابات العهدة', icon: Wallet, category: 'financial' },
     { id: 'suppliers', label: 'إدارة الموردين', icon: Users2, category: 'financial' },
     { id: 'expenses', label: 'المصروفات', icon: DollarSign, category: 'financial' },
     { id: 'inventory', label: 'المخزون', icon: Package, category: 'financial' },
@@ -78,6 +80,7 @@ function App() {
       'shipping-companies': 'shipping-companies',
       'payment-methods': 'payment-methods',
       'employee-balances': 'employee-balances',
+      'balance-audit': 'employee-balances',
       'suppliers': 'suppliers',
       'expenses': 'expenses',
       'inventory': 'inventory',
@@ -335,6 +338,7 @@ function App() {
                   {activeTab === 'shipping-companies' && <ShippingCompanies />}
                   {activeTab === 'payment-methods' && <PaymentMethodsDashboard />}
                   {activeTab === 'employee-balances' && <EmployeeBalances />}
+                  {activeTab === 'balance-audit' && <BalanceAudit />}
                   {activeTab === 'suppliers' && <Suppliers />}
                   {activeTab === 'expenses' && <Expenses />}
                   {activeTab === 'inventory' && <Inventory />}
