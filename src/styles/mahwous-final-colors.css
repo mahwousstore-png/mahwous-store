@@ -1,0 +1,280 @@
+/* ===================================
+   ألوان موقع مهووس - التطبيق النهائي
+   =================================== */
+
+:root {
+  /* الألوان الأساسية */
+  --mahwous-green: #0FFF50;
+  --mahwous-green-hover: #00CC40;
+  --mahwous-black: #000000;
+  --mahwous-dark-gray: #1a1a1a;
+  --mahwous-white: #FFFFFF;
+  --mahwous-red: #FF0000;
+  --mahwous-gold: #F5DEB3;
+}
+
+/* === إعادة تعيين شاملة للأزرار === */
+button,
+.btn,
+[type="button"],
+[type="submit"],
+a[role="button"] {
+  background-color: var(--mahwous-green) !important;
+  color: var(--mahwous-black) !important;
+  border: none !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+button:hover:not(:disabled),
+.btn:hover:not(:disabled) {
+  background-color: var(--mahwous-green-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 255, 80, 0.3) !important;
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* === الأزرار الخطرة (حذف، إلغاء) === */
+button[class*="red"],
+button[class*="danger"],
+.btn-danger {
+  background-color: var(--mahwous-red) !important;
+  color: var(--mahwous-white) !important;
+}
+
+button[class*="red"]:hover,
+button[class*="danger"]:hover {
+  background-color: #CC0000 !important;
+}
+
+/* === الأزرار المعطلة === */
+button:disabled,
+button[disabled] {
+  background-color: #666666 !important;
+  color: #999999 !important;
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* === القائمة الجانبية === */
+aside,
+nav,
+.sidebar {
+  background-color: var(--mahwous-dark-gray) !important;
+}
+
+aside button,
+nav button,
+.sidebar button {
+  background-color: var(--mahwous-green) !important;
+  color: var(--mahwous-black) !important;
+  width: 100%;
+  text-align: right;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+aside button:hover,
+nav button:hover {
+  background-color: var(--mahwous-green-hover) !important;
+}
+
+/* === الروابط === */
+a {
+  color: var(--mahwous-green) !important;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--mahwous-green-hover) !important;
+  text-decoration: underline;
+}
+
+/* === الجداول === */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead {
+  background-color: var(--mahwous-black) !important;
+}
+
+thead th {
+  background-color: var(--mahwous-black) !important;
+  color: var(--mahwous-white) !important;
+  padding: 1rem !important;
+  font-weight: 600 !important;
+  border-bottom: 3px solid var(--mahwous-green) !important;
+}
+
+tbody tr {
+  background-color: var(--mahwous-white);
+  transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+  background-color: #f0f0f0 !important;
+}
+
+tbody td {
+  padding: 0.875rem 1rem !important;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* === النماذج === */
+input,
+select,
+textarea {
+  border: 2px solid #d0d0d0 !important;
+  border-radius: 0.5rem !important;
+  padding: 0.625rem 0.875rem !important;
+  font-size: 1rem !important;
+  transition: all 0.2s !important;
+  background-color: var(--mahwous-white) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border-color: var(--mahwous-green) !important;
+  box-shadow: 0 0 0 3px rgba(15, 255, 80, 0.15) !important;
+}
+
+/* === الشارات === */
+.badge,
+span[class*="badge"] {
+  background-color: var(--mahwous-red) !important;
+  color: var(--mahwous-white) !important;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge.success {
+  background-color: var(--mahwous-green) !important;
+  color: var(--mahwous-black) !important;
+}
+
+/* === البطاقات === */
+.card,
+[class*="card"] {
+  background-color: var(--mahwous-white) !important;
+  border: 1px solid #e0e0e0 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s !important;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-2px);
+}
+
+/* === شريط التمرير === */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mahwous-green) !important;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mahwous-green-hover) !important;
+}
+
+/* === التركيز === */
+*:focus-visible {
+  outline: 2px solid var(--mahwous-green) !important;
+  outline-offset: 2px;
+}
+
+/* === تجاوز Tailwind بالكامل === */
+.bg-blue-500, .bg-blue-600, .bg-blue-700,
+.bg-indigo-500, .bg-indigo-600, .bg-indigo-700,
+.bg-purple-500, .bg-purple-600, .bg-purple-700,
+.bg-pink-500, .bg-pink-600, .bg-pink-700,
+.bg-violet-500, .bg-violet-600, .bg-violet-700 {
+  background-color: var(--mahwous-green) !important;
+}
+
+.text-blue-500, .text-blue-600,
+.text-indigo-500, .text-indigo-600,
+.text-purple-500, .text-purple-600 {
+  color: var(--mahwous-green) !important;
+}
+
+.border-blue-500, .border-blue-600,
+.border-indigo-500, .border-indigo-600 {
+  border-color: var(--mahwous-green) !important;
+}
+
+/* === تحسينات الجوال === */
+@media (max-width: 768px) {
+  button,
+  .btn {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    font-size: 1rem !important;
+  }
+  
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* منع التكبير في iOS */
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* === الرسوم المتحركة === */
+@keyframes pulse-green {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(15, 255, 80, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(15, 255, 80, 0);
+  }
+}
+
+button:focus:not(:disabled) {
+  animation: pulse-green 1.5s infinite;
+}
+
+/* === Loading Spinner === */
+.loading-spinner {
+  border: 3px solid #f0f0f0;
+  border-top-color: var(--mahwous-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
