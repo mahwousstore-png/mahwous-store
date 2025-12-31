@@ -4,6 +4,7 @@ import App from './App.tsx';
 import './index.css';
 import './styles/mahwous-theme.css';
 import './styles/enhancements.css';
+import './styles/animations.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
