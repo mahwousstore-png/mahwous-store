@@ -120,7 +120,8 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background-color: #f0f0f0 !important;
+  background-color: #FFF9E6 !important; /* ذهبي خفيف */
+  box-shadow: 0 2px 4px rgba(212, 175, 55, 0.15);
 }
 
 tbody td {
@@ -175,8 +176,10 @@ span[class*="badge"] {
 }
 
 .card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+  background-color: #FFF9E6 !important; /* ذهبي خفيف */
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.2) !important;
   transform: translateY(-2px);
+  border-color: var(--mahwous-gold) !important;
 }
 
 /* === شريط التمرير === */
@@ -203,6 +206,33 @@ span[class*="badge"] {
 *:focus-visible {
   outline: 2px solid var(--mahwous-green) !important;
   outline-offset: 2px;
+}
+
+/* === العناصر المحددة والنشطة === */
+tr.selected,
+tr[aria-selected="true"],
+.selected {
+  background-color: #FFF9E6 !important; /* ذهبي خفيف */
+  border-right: 4px solid var(--mahwous-gold) !important;
+}
+
+button.active,
+button[aria-current="true"],
+.active {
+  background-color: var(--mahwous-gold) !important;
+  color: var(--mahwous-black) !important;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* الخلفية عند التحديد بالماوس */
+::selection {
+  background-color: var(--mahwous-gold) !important;
+  color: var(--mahwous-black) !important;
+}
+
+::-moz-selection {
+  background-color: var(--mahwous-gold) !important;
+  color: var(--mahwous-black) !important;
 }
 
 /* === تجاوز Tailwind بالكامل === */
