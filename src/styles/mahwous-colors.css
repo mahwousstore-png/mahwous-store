@@ -1,0 +1,159 @@
+/* ===================================
+   ألوان موقع مهووس الأصلي - CSS خفيف
+   =================================== */
+
+:root {
+  /* الألوان الأساسية */
+  --mahwous-green: #00ff00;
+  --mahwous-green-dark: #00cc00;
+  --mahwous-black: #000000;
+  --mahwous-white: #ffffff;
+  --mahwous-red: #ff0000;
+  --mahwous-gold: #d4af37;
+  --mahwous-beige: #f5deb3;
+  
+  /* الألوان الرمادية */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-700: #374151;
+  --gray-900: #111827;
+}
+
+/* === الأزرار === */
+button,
+.btn {
+  background-color: var(--mahwous-green) !important;
+  color: var(--mahwous-black) !important;
+  border: none !important;
+  font-weight: 600 !important;
+}
+
+button:hover,
+.btn:hover {
+  background-color: var(--mahwous-green-dark) !important;
+}
+
+button:disabled {
+  background-color: var(--gray-300) !important;
+  opacity: 0.6 !important;
+}
+
+/* الأزرار الثانوية */
+button.secondary,
+.btn-secondary {
+  background-color: var(--mahwous-black) !important;
+  color: var(--mahwous-white) !important;
+}
+
+button.secondary:hover,
+.btn-secondary:hover {
+  background-color: var(--gray-700) !important;
+}
+
+/* الأزرار الخطرة */
+button.danger,
+.btn-danger {
+  background-color: var(--mahwous-red) !important;
+  color: var(--mahwous-white) !important;
+}
+
+/* === الشارات === */
+.badge,
+.tag {
+  background-color: var(--mahwous-red) !important;
+  color: var(--mahwous-white) !important;
+  font-weight: 600 !important;
+}
+
+.badge.success {
+  background-color: var(--mahwous-green) !important;
+  color: var(--mahwous-black) !important;
+}
+
+/* === الروابط === */
+a {
+  color: var(--mahwous-green) !important;
+}
+
+a:hover {
+  color: var(--mahwous-green-dark) !important;
+}
+
+/* === الجداول === */
+thead th {
+  background-color: var(--mahwous-black) !important;
+  color: var(--mahwous-white) !important;
+  border-bottom: 2px solid var(--mahwous-green) !important;
+}
+
+tbody tr:hover {
+  background-color: var(--gray-50) !important;
+}
+
+/* === النماذج === */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--mahwous-green) !important;
+  box-shadow: 0 0 0 3px rgba(0, 255, 0, 0.1) !important;
+}
+
+/* === الفلاتر === */
+.filter-button.active {
+  background-color: var(--mahwous-green) !important;
+  color: var(--mahwous-black) !important;
+  border-color: var(--mahwous-green) !important;
+}
+
+.filter-button:hover {
+  border-color: var(--mahwous-green) !important;
+  color: var(--mahwous-green) !important;
+}
+
+/* === الأيقونات === */
+svg,
+.icon {
+  color: var(--mahwous-green);
+}
+
+/* === شريط التمرير === */
+::-webkit-scrollbar-thumb {
+  background: var(--mahwous-green) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mahwous-green-dark) !important;
+}
+
+/* === التركيز === */
+*:focus {
+  outline-color: var(--mahwous-green) !important;
+}
+
+/* === الحالات === */
+.text-success {
+  color: var(--mahwous-green) !important;
+}
+
+.text-danger {
+  color: var(--mahwous-red) !important;
+}
+
+.bg-success {
+  background-color: var(--mahwous-green) !important;
+}
+
+.bg-danger {
+  background-color: var(--mahwous-red) !important;
+}
+
+/* === الحدود === */
+.border-success {
+  border-color: var(--mahwous-green) !important;
+}
+
+.border-primary {
+  border-color: var(--mahwous-green) !important;
+}
