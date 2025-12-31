@@ -1,0 +1,98 @@
+/* مهووس برو - الهوية الجديدة (أسود وذهبي) */
+
+:root {
+  --color-black: #000000;
+  --color-dark: #1A1A1A;
+  --color-darker: #252525;
+  --color-gold: #D4AF37;
+  --color-gold-light: #E5C158;
+  --color-gold-dark: #B8941F;
+  --color-white: #FFFFFF;
+  --color-gray-light: #CCCCCC;
+  --color-gray: #999999;
+  --color-success: #10B981;
+  --color-danger: #EF4444;
+  --color-warning: #F59E0B;
+}
+
+/* الخلفية الرئيسية */
+body {
+  background-color: var(--color-black) !important;
+  color: var(--color-white) !important;
+}
+
+/* البطاقات */
+.bg-white {
+  background-color: var(--color-darker) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+}
+
+/* النصوص */
+.text-gray-900 {
+  color: var(--color-white) !important;
+}
+
+.text-gray-600, .text-gray-500, .text-gray-700 {
+  color: var(--color-gray-light) !important;
+}
+
+/* الأزرار الذهبية */
+.bg-blue-600, .bg-blue-500, .bg-indigo-600 {
+  background-color: var(--color-gold) !important;
+  color: var(--color-black) !important;
+}
+
+.bg-blue-600:hover, .bg-blue-500:hover, .bg-indigo-600:hover {
+  background-color: var(--color-gold-light) !important;
+}
+
+/* الحدود */
+.border-gray-200, .border-gray-300 {
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+/* الحقول النصية */
+input, textarea, select {
+  background-color: var(--color-dark) !important;
+  border-color: rgba(212, 175, 55, 0.3) !important;
+  color: var(--color-white) !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--color-gold) !important;
+  ring-color: var(--color-gold) !important;
+}
+
+/* الجداول */
+table thead {
+  background-color: var(--color-darker) !important;
+  border-bottom: 2px solid var(--color-gold) !important;
+}
+
+table tbody tr {
+  background-color: var(--color-dark) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+}
+
+table tbody tr:hover {
+  background-color: var(--color-darker) !important;
+}
+
+/* الألوان حسب الحالة */
+.text-green-600 {
+  color: var(--color-success) !important;
+}
+
+.text-red-600 {
+  color: var(--color-danger) !important;
+}
+
+.text-yellow-600 {
+  color: var(--color-warning) !important;
+}
+
+/* الأرقام بالإنجليزية */
+.number {
+  direction: ltr;
+  display: inline-block;
+}
