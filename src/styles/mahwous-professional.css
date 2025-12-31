@@ -488,3 +488,258 @@ a:hover {
 .text-gray-700 {
   color: var(--gray-text) !important;
 }
+
+/* === إصلاحات شاملة للألوان الفاقعة === */
+
+/* إصلاح البطاقات البيضاء/الفاتحة */
+.bg-white,
+.bg-gray-50,
+.bg-gray-100,
+.bg-gray-200,
+.bg-beige,
+.bg-cream,
+[class*="bg-white"],
+[class*="bg-gray"],
+[style*="background: white"],
+[style*="background: #fff"],
+[style*="background-color: white"],
+[style*="background-color: #fff"],
+[style*="background: rgb(255"],
+[style*="background: #F5DEB3"],
+[style*="background: beige"] {
+  background-color: var(--gray-dark) !important;
+  background: var(--gray-dark) !important;
+}
+
+/* إصلاح الأزرار الذهبية الفاقعة */
+button[class*="yellow"],
+button[class*="gold"],
+button[style*="background: #D4AF37"],
+button[style*="background: #F4D03F"],
+button[style*="background: yellow"],
+button[style*="background: gold"],
+.bg-yellow-400,
+.bg-yellow-500,
+.bg-gold-400,
+.bg-gold-500,
+[class*="bg-yellow"],
+[class*="bg-gold"] {
+  background: var(--gray-medium) !important;
+  color: var(--gold-light) !important;
+  border: 1px solid rgba(212, 175, 55, 0.4) !important;
+}
+
+button[class*="yellow"]:hover,
+button[class*="gold"]:hover {
+  background: var(--gradient-gold-hover) !important;
+  border-color: rgba(212, 175, 55, 0.7) !important;
+}
+
+/* إصلاح الأزرار البرتقالية */
+button[class*="orange"],
+button[style*="background: orange"],
+button[style*="background: #FF"],
+.bg-orange-400,
+.bg-orange-500,
+[class*="bg-orange"] {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: var(--orange-warning) !important;
+  border: 1px solid rgba(245, 158, 11, 0.4) !important;
+}
+
+button[class*="orange"]:hover {
+  background: rgba(245, 158, 11, 0.25) !important;
+  border-color: var(--orange-warning) !important;
+}
+
+/* إصلاح البانرات الذهبية الكبيرة */
+.banner,
+.alert,
+.notice,
+[class*="banner"],
+[class*="alert-warning"],
+[style*="background: linear-gradient"][style*="gold"],
+[style*="background: linear-gradient"][style*="yellow"] {
+  background: rgba(212, 175, 55, 0.1) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: var(--gold-light) !important;
+}
+
+/* إصلاح المربعات الذهبية في الجداول */
+td > div[class*="bg-yellow"],
+td > div[class*="bg-gold"],
+td > div[style*="background: yellow"],
+td > div[style*="background: gold"],
+td > span[class*="bg-yellow"],
+td > span[class*="bg-gold"] {
+  background: rgba(212, 175, 55, 0.15) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  padding: 0.5rem !important;
+  border-radius: 6px !important;
+}
+
+/* إصلاح الأيقونات الفاقعة */
+svg[class*="text-yellow"],
+svg[class*="text-gold"],
+svg[class*="text-orange"],
+.icon-yellow,
+.icon-gold,
+.icon-orange {
+  color: var(--gold-subtle) !important;
+  opacity: 0.8;
+}
+
+/* إصلاح الشارات الفاقعة */
+.badge[class*="yellow"],
+.badge[class*="gold"],
+.badge[class*="orange"],
+span[class*="badge-yellow"],
+span[class*="badge-gold"],
+span[class*="badge-orange"] {
+  background: rgba(212, 175, 55, 0.15) !important;
+  color: var(--gold-light) !important;
+  border: 1px solid rgba(212, 175, 55, 0.4) !important;
+}
+
+/* إصلاح النصوص الذهبية الفاقعة */
+.text-yellow-400,
+.text-yellow-500,
+.text-gold-400,
+.text-gold-500,
+[class*="text-yellow"],
+[class*="text-gold"] {
+  color: var(--gold-subtle) !important;
+}
+
+/* إصلاح الحدود الذهبية الفاقعة */
+.border-yellow-400,
+.border-yellow-500,
+.border-gold-400,
+.border-gold-500,
+[class*="border-yellow"],
+[class*="border-gold"] {
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+/* إصلاح الأزرار في القائمة الجانبية */
+aside button[class*="bg-yellow"],
+aside button[class*="bg-gold"],
+nav button[class*="bg-yellow"],
+nav button[class*="bg-gold"] {
+  background: transparent !important;
+  color: var(--gray-text) !important;
+}
+
+aside button[class*="bg-yellow"]:hover,
+aside button[class*="bg-gold"]:hover,
+nav button[class*="bg-yellow"]:hover,
+nav button[class*="bg-gold"]:hover {
+  background: var(--gray-dark) !important;
+  color: var(--white-primary) !important;
+}
+
+aside button.active[class*="bg-yellow"],
+aside button.active[class*="bg-gold"],
+nav button.active[class*="bg-yellow"],
+nav button.active[class*="bg-gold"] {
+  background: var(--gradient-gold-active) !important;
+  color: var(--black-primary) !important;
+}
+
+/* إصلاح البطاقات الكبيرة (KPI) */
+.kpi-card,
+.summary-card,
+.stat-card,
+[class*="stat-"],
+[class*="kpi-"] {
+  background-color: var(--gray-dark) !important;
+  border: 1px solid var(--gray-border) !important;
+}
+
+/* إصلاح الخلفيات الفاتحة في أي مكان */
+[style*="background: #FFF"],
+[style*="background: #fff"],
+[style*="background: white"],
+[style*="background: #F5F5F5"],
+[style*="background: #FAFAFA"],
+[style*="background: rgb(255, 255, 255)"],
+[style*="background-color: #FFF"],
+[style*="background-color: #fff"],
+[style*="background-color: white"],
+[style*="background-color: #F5F5F5"] {
+  background: var(--gray-dark) !important;
+  background-color: var(--gray-dark) !important;
+}
+
+/* إصلاح النصوص السوداء على خلفيات داكنة */
+[style*="color: #000"],
+[style*="color: black"],
+[style*="color: rgb(0, 0, 0)"] {
+  color: var(--white-primary) !important;
+}
+
+/* === إصلاحات خاصة بالمكونات === */
+
+/* إصلاح أزرار الإضافة */
+button[aria-label*="إضافة"],
+button[aria-label*="Add"],
+button:has(svg[class*="plus"]) {
+  background: var(--gray-medium) !important;
+  color: var(--gold-light) !important;
+  border: 1px solid rgba(212, 175, 55, 0.4) !important;
+}
+
+/* إصلاح أزرار التصدير */
+button[aria-label*="تصدير"],
+button[aria-label*="Export"],
+button:has(svg[class*="download"]) {
+  background: var(--gray-medium) !important;
+  color: var(--blue-info) !important;
+  border: 1px solid rgba(59, 130, 246, 0.4) !important;
+}
+
+/* إصلاح أزرار الحذف */
+button[aria-label*="حذف"],
+button[aria-label*="Delete"],
+button:has(svg[class*="trash"]) {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: var(--red-loss) !important;
+  border: 1px solid rgba(239, 68, 68, 0.4) !important;
+}
+
+/* إصلاح أيقونات المستخدم */
+button:has(svg[class*="user"]),
+.user-avatar,
+.profile-icon {
+  background: var(--gray-medium) !important;
+  color: var(--gold-light) !important;
+  border: 1px solid rgba(212, 175, 55, 0.4) !important;
+}
+
+/* === تجاوزات نهائية === */
+
+/* تجاوز أي inline styles فاقعة */
+* {
+  /* لا يمكن تجاوز inline styles مباشرة، لكن يمكن زيادة الأولوية */
+}
+
+/* التأكد من أن جميع الأزرار تتبع النمط الموحد */
+button:not(.active):not(:hover) {
+  background: var(--gray-medium) !important;
+  color: var(--gold-light) !important;
+}
+
+/* التأكد من أن جميع البطاقات داكنة */
+div[class*="card"]:not([class*="bg-transparent"]) {
+  background-color: var(--gray-dark) !important;
+}
+
+/* التأكد من أن جميع النصوص واضحة */
+p, span, div, label {
+  color: var(--white-primary);
+}
+
+/* التأكد من أن العناوين ذهبية خفيفة */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--gold-light) !important;
+}
