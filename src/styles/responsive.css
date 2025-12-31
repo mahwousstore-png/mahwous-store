@@ -1,0 +1,317 @@
+/* ===================================
+   تحسينات التصميم المتجاوب لنظام مهووس برو
+   =================================== */
+
+/* === 1. التخطيط العام === */
+@media (max-width: 768px) {
+  /* تحسين الحاويات الرئيسية */
+  .container {
+    padding: 0.5rem !important;
+  }
+
+  /* تحسين العناوين */
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  /* تحسين المسافات */
+  .p-6 {
+    padding: 1rem !important;
+  }
+
+  .p-4 {
+    padding: 0.75rem !important;
+  }
+
+  .gap-6 {
+    gap: 1rem !important;
+  }
+
+  .gap-4 {
+    gap: 0.75rem !important;
+  }
+}
+
+/* === 2. القوائم الجانبية === */
+@media (max-width: 1024px) {
+  /* إخفاء القائمة الجانبية على الشاشات الصغيرة */
+  aside {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    background: #000;
+  }
+
+  aside.open {
+    left: 0;
+  }
+
+  /* زر القائمة للجوال */
+  .mobile-menu-button {
+    display: block !important;
+  }
+
+  /* تعديل المحتوى الرئيسي */
+  main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+/* === 3. الجداول === */
+@media (max-width: 768px) {
+  /* جعل الجداول قابلة للتمرير */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 800px;
+    font-size: 0.875rem;
+  }
+
+  th, td {
+    padding: 0.5rem !important;
+    white-space: nowrap;
+  }
+
+  /* إخفاء بعض الأعمدة غير الضرورية على الجوال */
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* === 4. البطاقات === */
+@media (max-width: 768px) {
+  /* تحويل البطاقات إلى عمود واحد */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* تحسين حجم البطاقات */
+  .card {
+    padding: 1rem !important;
+  }
+
+  /* تحسين الأيقونات */
+  .icon {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+}
+
+/* === 5. الأزرار === */
+@media (max-width: 768px) {
+  /* تحسين حجم الأزرار */
+  button {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+    min-height: 44px; /* حجم مناسب للمس */
+  }
+
+  /* تحويل مجموعات الأزرار إلى عمود */
+  .button-group {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .button-group button {
+    width: 100% !important;
+  }
+}
+
+/* === 6. النماذج === */
+@media (max-width: 768px) {
+  /* تحسين حقول الإدخال */
+  input, select, textarea {
+    font-size: 16px !important; /* منع التكبير التلقائي في iOS */
+    min-height: 44px !important;
+  }
+
+  /* تحويل النماذج إلى عمود واحد */
+  .form-row {
+    flex-direction: column !important;
+  }
+
+  .form-row > * {
+    width: 100% !important;
+  }
+}
+
+/* === 7. النوافذ المنبثقة (Modals) === */
+@media (max-width: 768px) {
+  /* تحسين حجم النوافذ المنبثقة */
+  .modal {
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+    margin: 1rem !important;
+  }
+
+  .modal-content {
+    padding: 1rem !important;
+  }
+
+  /* تحسين الخطوات (Steps) */
+  .steps {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .step {
+    width: 100% !important;
+  }
+}
+
+/* === 8. الإحصائيات === */
+@media (max-width: 768px) {
+  /* تحويل الإحصائيات إلى عمود واحد */
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* تحسين حجم الأرقام */
+  .stat-number {
+    font-size: 1.5rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* === 9. القوائم المنسدلة === */
+@media (max-width: 768px) {
+  /* تحسين القوائم المنسدلة */
+  select {
+    background-size: 1rem !important;
+    padding-right: 2rem !important;
+  }
+
+  /* تحسين القوائم المخصصة */
+  .dropdown-menu {
+    max-width: 95vw !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+}
+
+/* === 10. الفلاتر === */
+@media (max-width: 768px) {
+  /* تحويل الفلاتر إلى عمود */
+  .filters {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .filters > * {
+    width: 100% !important;
+  }
+
+  /* إخفاء الفلاتر المتقدمة بشكل افتراضي */
+  .advanced-filters {
+    display: none !important;
+  }
+
+  .advanced-filters.show {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+/* === 11. الترقيم (Pagination) === */
+@media (max-width: 768px) {
+  /* تحسين الترقيم */
+  .pagination {
+    gap: 0.25rem !important;
+  }
+
+  .pagination button {
+    padding: 0.5rem !important;
+    min-width: 40px !important;
+  }
+
+  /* إخفاء بعض أرقام الصفحات */
+  .pagination .page-number:not(.active):not(:first-child):not(:last-child) {
+    display: none !important;
+  }
+}
+
+/* === 12. الرسائل والإشعارات === */
+@media (max-width: 768px) {
+  /* تحسين الرسائل */
+  .toast, .notification {
+    max-width: 95vw !important;
+    margin: 0.5rem !important;
+  }
+}
+
+/* === 13. التمرير === */
+@media (max-width: 768px) {
+  /* تحسين التمرير */
+  .overflow-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* إخفاء شريط التمرير على الجوال */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* === 14. الطباعة === */
+@media print {
+  /* إخفاء العناصر غير الضرورية عند الطباعة */
+  aside, .mobile-menu-button, button, .filters {
+    display: none !important;
+  }
+
+  /* تحسين الجداول للطباعة */
+  table {
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+}
+
+/* === 15. تحسينات إضافية === */
+@media (max-width: 768px) {
+  /* تحسين الصور */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* تحسين الفيديو */
+  video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* تحسين الأكواد */
+  pre, code {
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+  }
+}
