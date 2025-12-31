@@ -455,15 +455,20 @@ const Expenses: React.FC = () => {
           if (balanceError) {
             console.error('⚠️ Error deducting from balance:', balanceError);
             // حذف المصروف إذا فشل الخصم من العهدة
+            let rollbackFailed = false;
             try {
               await supabase.from('expenses').delete().eq('id', expenseResult.id);
             } catch (deleteError) {
+              rollbackFailed = true;
               console.error('⚠️ Error rolling back expense (original error + rollback failed):', {
                 balanceError,
                 deleteError
               });
             }
-            throw new Error(`فشل في خصم المبلغ من العهدة: ${balanceError.message || 'خطأ غير معروف'}`);
+            const errorMsg = rollbackFailed
+              ? `فشل في خصم المبلغ من العهدة وفشل التراجع التلقائي. يرجى حذف المصروف يدوياً: ${balanceError.message || 'خطأ غير معروف'}`
+              : `فشل في خصم المبلغ من العهدة: ${balanceError.message || 'خطأ غير معروف'}`;
+            throw new Error(errorMsg);
           } else {
             console.log('✅ Amount deducted from employee balance');
           }
