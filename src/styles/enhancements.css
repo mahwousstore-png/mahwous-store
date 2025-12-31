@@ -1,0 +1,402 @@
+/* تحسينات شاملة - مهووس برو */
+
+/* ===== الأرقام بالإنجليزية ===== */
+
+/* جميع الأرقام والمبالغ تظهر بالإنجليزية */
+.number,
+[class*="price"],
+[class*="amount"],
+[class*="total"],
+[class*="balance"],
+[class*="cost"],
+td:has(span),
+.text-2xl,
+.text-3xl,
+.text-4xl {
+  direction: ltr !important;
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: "tnum" !important;
+}
+
+/* ===== وضوح النصوص ===== */
+
+/* تحسين وضوح جميع النصوص */
+* {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* العناوين الرئيسية */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: #FFFFFF !important;
+}
+
+/* النصوص الثانوية */
+p, span, div {
+  line-height: 1.6 !important;
+}
+
+/* ===== الألوان حسب الحالة ===== */
+
+/* أخضر للمكاسب والنجاح */
+.profit,
+.success,
+.completed,
+.active,
+.available,
+[class*="profit"],
+[class*="success"] {
+  color: #10B981 !important;
+}
+
+.profit-bg,
+.success-bg {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+/* أحمر للخسائر والأخطاء */
+.loss,
+.error,
+.cancelled,
+.failed,
+.inactive,
+[class*="loss"],
+[class*="error"],
+[class*="cancel"] {
+  color: #EF4444 !important;
+}
+
+.loss-bg,
+.error-bg {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+/* ذهبي للعناصر الأساسية */
+.primary,
+.pending,
+.new,
+[class*="primary"] {
+  color: #D4AF37 !important;
+}
+
+/* ===== تحسين الأزرار ===== */
+
+/* جميع الأزرار */
+button {
+  font-weight: 600 !important;
+  transition: all 0.2s ease-in-out !important;
+  cursor: pointer !important;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2) !important;
+}
+
+button:not(:disabled):active {
+  transform: translateY(0) !important;
+}
+
+button:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+/* الأزرار الأساسية (ذهبي) */
+button.bg-\[#D4AF37\],
+button[class*="bg-blue"],
+button[class*="bg-indigo"] {
+  background-color: #D4AF37 !important;
+  color: #000000 !important;
+  border: none !important;
+}
+
+button.bg-\[#D4AF37\]:hover,
+button[class*="bg-blue"]:hover,
+button[class*="bg-indigo"]:hover {
+  background-color: #B8941F !important;
+}
+
+/* الأزرار الثانوية */
+button[class*="bg-gray"],
+button[class*="border"] {
+  background-color: transparent !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  color: #D4AF37 !important;
+}
+
+button[class*="bg-gray"]:hover,
+button[class*="border"]:hover {
+  background-color: rgba(212, 175, 55, 0.1) !important;
+  border-color: rgba(212, 175, 55, 0.5) !important;
+}
+
+/* أزرار الخطر (أحمر) */
+button[class*="bg-red"],
+button[class*="danger"] {
+  background-color: #EF4444 !important;
+  color: #FFFFFF !important;
+}
+
+button[class*="bg-red"]:hover,
+button[class*="danger"]:hover {
+  background-color: #DC2626 !important;
+}
+
+/* أزرار النجاح (أخضر) */
+button[class*="bg-green"],
+button[class*="success"] {
+  background-color: #10B981 !important;
+  color: #FFFFFF !important;
+}
+
+button[class*="bg-green"]:hover,
+button[class*="success"]:hover {
+  background-color: #059669 !important;
+}
+
+/* ===== تحسين الجداول ===== */
+
+/* رأس الجدول */
+thead th {
+  background-color: #1A1A1A !important;
+  color: #D4AF37 !important;
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  padding: 1rem !important;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3) !important;
+}
+
+/* صفوف الجدول */
+tbody tr {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+  transition: background-color 0.15s ease !important;
+}
+
+tbody tr:hover {
+  background-color: rgba(212, 175, 55, 0.05) !important;
+}
+
+tbody td {
+  padding: 1rem !important;
+  color: #FFFFFF !important;
+}
+
+/* ===== تحسين الحقول النصية ===== */
+
+input,
+textarea,
+select {
+  background-color: #1A1A1A !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  color: #FFFFFF !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  transition: all 0.2s ease !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #D4AF37 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #707070 !important;
+}
+
+/* ===== تحسين البطاقات ===== */
+
+/* جميع البطاقات */
+[class*="bg-white"],
+[class*="bg-gray-"] {
+  background-color: #252525 !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: 1rem !important;
+  transition: all 0.2s ease !important;
+}
+
+[class*="bg-white"]:hover,
+[class*="bg-gray-"]:hover {
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.1) !important;
+}
+
+/* ===== تحسين الـ Badges ===== */
+
+/* Badge النجاح */
+.badge-success,
+[class*="bg-green-100"] {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  color: #10B981 !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+}
+
+/* Badge الخطأ */
+.badge-error,
+[class*="bg-red-100"] {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  color: #EF4444 !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+}
+
+/* Badge التحذير */
+.badge-warning,
+[class*="bg-yellow-100"] {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  color: #F59E0B !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+}
+
+/* Badge المعلومات */
+.badge-info,
+[class*="bg-blue-100"] {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+  color: #3B82F6 !important;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 9999px !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+}
+
+/* ===== تحسين الـ Loading ===== */
+
+.loading-spinner {
+  border-color: #D4AF37 !important;
+  border-top-color: transparent !important;
+}
+
+/* ===== تحسين الـ Modals ===== */
+
+/* خلفية الـ Modal */
+[class*="fixed"][class*="inset-0"] {
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+/* محتوى الـ Modal */
+[role="dialog"] {
+  background-color: #252525 !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ===== تحسين الـ Scrollbar ===== */
+
+::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A1A !important;
+  border-radius: 5px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37 !important;
+  border-radius: 5px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8941F !important;
+}
+
+/* ===== تحسين الـ Tooltips ===== */
+
+[title]:hover::after {
+  background-color: #252525 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  font-size: 0.875rem !important;
+}
+
+/* ===== تحسين الـ Responsive ===== */
+
+@media (max-width: 768px) {
+  /* تحسين الأزرار على الجوال */
+  button {
+    min-height: 44px !important;
+    padding: 0.75rem 1rem !important;
+  }
+  
+  /* تحسين الحقول على الجوال */
+  input,
+  textarea,
+  select {
+    min-height: 44px !important;
+    font-size: 16px !important; /* لمنع الـ Zoom على iOS */
+  }
+  
+  /* تحسين الجداول على الجوال */
+  table {
+    font-size: 0.875rem !important;
+  }
+  
+  td, th {
+    padding: 0.5rem !important;
+  }
+}
+
+/* ===== تحسينات إضافية ===== */
+
+/* تحسين الـ Focus للوصول */
+*:focus-visible {
+  outline: 2px solid #D4AF37 !important;
+  outline-offset: 2px !important;
+}
+
+/* تحسين الـ Selection */
+::selection {
+  background-color: rgba(212, 175, 55, 0.3) !important;
+  color: #FFFFFF !important;
+}
+
+/* تحسين الـ Links */
+a {
+  color: #D4AF37 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+a:hover {
+  color: #B8941F !important;
+  text-decoration: underline !important;
+}
+
+/* تحسين الـ Dividers */
+hr {
+  border-color: rgba(212, 175, 55, 0.2) !important;
+  margin: 1.5rem 0 !important;
+}
+
+/* تحسين الـ Shadows */
+.shadow-lg {
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15) !important;
+}
+
+.shadow-xl {
+  box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2) !important;
+}
