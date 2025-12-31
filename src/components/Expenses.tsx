@@ -458,9 +458,12 @@ const Expenses: React.FC = () => {
             try {
               await supabase.from('expenses').delete().eq('id', expenseResult.id);
             } catch (deleteError) {
-              console.error('⚠️ Error rolling back expense:', deleteError);
+              console.error('⚠️ Error rolling back expense (original error + rollback failed):', {
+                balanceError,
+                deleteError
+              });
             }
-            throw new Error('فشل في خصم المبلغ من العهدة');
+            throw new Error(`فشل في خصم المبلغ من العهدة: ${balanceError.message || 'خطأ غير معروف'}`);
           } else {
             console.log('✅ Amount deducted from employee balance');
           }
