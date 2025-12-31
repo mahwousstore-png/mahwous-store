@@ -32,9 +32,10 @@
   --orange-warning: #F59E0B;
   --blue-info: #3B82F6;
   
-  /* التدرجات */
-  --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
-  --gradient-gold-hover: linear-gradient(135deg, #F4D03F 0%, #FFE55C 100%);
+  /* التدرجات - مخففة */
+  --gradient-gold: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(244, 208, 63, 0.2) 100%);
+  --gradient-gold-hover: linear-gradient(135deg, rgba(212, 175, 55, 0.35) 0%, rgba(244, 208, 63, 0.35) 100%);
+  --gradient-gold-active: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
 }
 
 /* === الخلفية الرئيسية === */
@@ -195,9 +196,9 @@ button,
 .btn,
 [type="button"],
 [type="submit"] {
-  background: var(--gradient-gold) !important;
-  color: var(--black-primary) !important;
-  border: none !important;
+  background: var(--gray-medium) !important;
+  color: var(--gold-light) !important;
+  border: 1px solid rgba(212, 175, 55, 0.4) !important;
   font-weight: 600 !important;
   padding: 0.75rem 1.5rem !important;
   border-radius: 8px !important;
@@ -208,8 +209,9 @@ button,
 
 button:hover:not(:disabled) {
   background: var(--gradient-gold-hover) !important;
+  border-color: rgba(212, 175, 55, 0.7) !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(244, 208, 63, 0.5) !important;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.2) !important;
 }
 
 button:active:not(:disabled) {
@@ -231,9 +233,18 @@ button.secondary:hover {
 
 /* أزرار الخطر */
 button.danger,
-button[class*="red"] {
-  background: var(--red-loss) !important;
-  color: var(--white-primary) !important;
+button[class*="red"],
+button[class*="delete"] {
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: var(--red-loss) !important;
+  border: 1px solid rgba(239, 68, 68, 0.4) !important;
+}
+
+button.danger:hover,
+button[class*="red"]:hover,
+button[class*="delete"]:hover {
+  background: rgba(239, 68, 68, 0.25) !important;
+  border-color: var(--red-loss) !important;
 }
 
 button:disabled {
@@ -272,7 +283,7 @@ aside button:hover {
 
 aside button.active,
 aside button[aria-current="true"] {
-  background: var(--gradient-gold) !important;
+  background: var(--gradient-gold-active) !important;
   color: var(--black-primary) !important;
   font-weight: 600 !important;
   box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3) !important;
