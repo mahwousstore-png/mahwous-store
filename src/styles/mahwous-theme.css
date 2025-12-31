@@ -1,0 +1,229 @@
+/* مهووس برو - الهوية الجديدة */
+/* الألوان الأساسية */
+:root {
+  --mahwous-black: #000000;
+  --mahwous-dark: #1A1A1A;
+  --mahwous-card: #252525;
+  --mahwous-gold: #D4AF37;
+  --mahwous-gold-dark: #B8941F;
+  --mahwous-text-white: #FFFFFF;
+  --mahwous-text-gray: #B0B0B0;
+  --mahwous-text-dark-gray: #707070;
+  --mahwous-border: rgba(212, 175, 55, 0.2);
+  --mahwous-border-hover: rgba(212, 175, 55, 0.4);
+}
+
+/* الخلفية الرئيسية */
+body {
+  background-color: var(--mahwous-black) !important;
+  color: var(--mahwous-text-white) !important;
+}
+
+/* البطاقات */
+.bg-white,
+[class*="bg-white"] {
+  background-color: var(--mahwous-card) !important;
+  border: 1px solid var(--mahwous-border) !important;
+}
+
+/* النصوص */
+.text-gray-600,
+.text-gray-700,
+.text-gray-800,
+[class*="text-gray"] {
+  color: var(--mahwous-text-gray) !important;
+}
+
+.text-gray-900,
+[class*="text-gray-9"] {
+  color: var(--mahwous-text-white) !important;
+}
+
+/* الأزرار الأساسية (Primary) */
+.bg-blue-600,
+.bg-blue-500,
+.bg-indigo-600,
+[class*="bg-blue"],
+[class*="bg-indigo"] {
+  background-color: var(--mahwous-gold) !important;
+  color: #000000 !important;
+  border-color: var(--mahwous-gold) !important;
+}
+
+.bg-blue-600:hover,
+.bg-blue-500:hover,
+.bg-indigo-600:hover {
+  background-color: var(--mahwous-gold-dark) !important;
+}
+
+/* الأزرار الثانوية */
+.bg-gray-100,
+.bg-gray-200,
+[class*="bg-gray-1"],
+[class*="bg-gray-2"] {
+  background-color: var(--mahwous-dark) !important;
+  color: var(--mahwous-text-white) !important;
+  border: 1px solid var(--mahwous-border) !important;
+}
+
+/* الحدود */
+.border-gray-200,
+.border-gray-300,
+[class*="border-gray"] {
+  border-color: var(--mahwous-border) !important;
+}
+
+/* الحقول النصية */
+input,
+textarea,
+select {
+  background-color: var(--mahwous-dark) !important;
+  color: var(--mahwous-text-white) !important;
+  border-color: var(--mahwous-border) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--mahwous-gold) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--mahwous-text-dark-gray) !important;
+}
+
+/* الجداول */
+table {
+  background-color: var(--mahwous-card) !important;
+}
+
+thead {
+  background-color: var(--mahwous-dark) !important;
+}
+
+th {
+  color: var(--mahwous-gold) !important;
+  border-color: var(--mahwous-border) !important;
+}
+
+td {
+  color: var(--mahwous-text-white) !important;
+  border-color: var(--mahwous-border) !important;
+}
+
+tr:hover {
+  background-color: rgba(212, 175, 55, 0.05) !important;
+}
+
+/* الـ Modal */
+.fixed.inset-0 {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* الـ Dropdown */
+[role="menu"],
+[role="listbox"] {
+  background-color: var(--mahwous-card) !important;
+  border-color: var(--mahwous-border) !important;
+}
+
+/* الـ Badge */
+.bg-green-100,
+.bg-yellow-100,
+.bg-red-100,
+.bg-blue-100 {
+  opacity: 0.9;
+}
+
+/* الـ Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--mahwous-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mahwous-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mahwous-gold-dark);
+}
+
+/* الـ Hover Effects */
+button:hover,
+a:hover {
+  transition: all 0.2s ease-in-out;
+}
+
+/* الـ Loading Spinner */
+.animate-spin {
+  border-color: var(--mahwous-gold) !important;
+  border-top-color: transparent !important;
+}
+
+/* تحسينات إضافية */
+.shadow-lg,
+.shadow-xl {
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.1) !important;
+}
+
+/* الـ Disabled State */
+button:disabled,
+input:disabled,
+select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* الـ Success/Error Messages */
+.bg-green-50 {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+.bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+.bg-yellow-50 {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+/* الـ Links */
+a {
+  color: var(--mahwous-gold) !important;
+}
+
+a:hover {
+  color: var(--mahwous-gold-dark) !important;
+}
+
+/* الـ Divider */
+hr {
+  border-color: var(--mahwous-border) !important;
+}
+
+/* الـ Checkbox & Radio */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--mahwous-gold) !important;
+}
+
+/* الـ Progress Bar */
+progress {
+  accent-color: var(--mahwous-gold) !important;
+}
+
+/* تحسينات الـ Responsive */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
