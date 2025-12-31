@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { DateInput } from './DateInput';
 import {
   ArrowLeft, Banknote, Receipt, Trash2, User, AlertCircle, Users, X, CheckCircle, Download, FileText, TrendingUp, DollarSign
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { DateInput } from './DateInput';
 import { authService } from '../lib/auth';
+import { DateInput } from './DateInput';
 import toast, { Toaster } from 'react-hot-toast';
+import { DateInput } from './DateInput';
 import ExcelJS from 'exceljs';
+import { DateInput } from './DateInput';
 import { saveAs } from 'file-saver';
+import { DateInput } from './DateInput';
 import html2canvas from 'html2canvas';
+import { DateInput } from './DateInput';
 import jsPDF from 'jspdf';
+import { DateInput } from './DateInput';
 
 interface UserProfile {
   id: string;

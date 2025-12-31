@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { DateInput } from './DateInput';
 import {
   ArrowLeft, Banknote, Package, Receipt, Trash2, Wallet, X, CheckCircle,
   CreditCard, Smartphone, User, AlertCircle, Users, Plus, Minus
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { DateInput } from './DateInput';
 import { useOrders } from '../hooks/useOrders';
+import { DateInput } from './DateInput';
 import { authService } from '../lib/auth';
+import { DateInput } from './DateInput';
 import toast, { Toaster } from 'react-hot-toast';
+import { DateInput } from './DateInput';
 interface PaymentMethod {
   id: string;
   name: string;

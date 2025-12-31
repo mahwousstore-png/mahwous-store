@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
+import { DateInput } from './DateInput';
 import {
   Search, Download, Eye, Package, Calendar, CheckCircle, Filter, Trash2, X,
   Phone, Truck, CreditCard, Clock, User, DollarSign, Users2, ChevronLeft, ChevronRight,
   Loader2, Plus, Edit2, ChevronDown, Info, Brain, XCircle // إضافة: XCircle للأخطاء
 } from 'lucide-react';
 import { useOrders } from '../hooks/useOrders';
+import { DateInput } from './DateInput';
 import { useReceivables } from '../hooks/useReceivables';
+import { DateInput } from './DateInput';
 import { Order, Product } from '../types/order';
+import { DateInput } from './DateInput';
 import { Entity } from '../types/receivables';
+import { DateInput } from './DateInput';
 import toast from 'react-hot-toast';
+import { DateInput } from './DateInput';
 import ExcelJS from 'exceljs';
+import { DateInput } from './DateInput';
 import { saveAs } from 'file-saver';
+import { DateInput } from './DateInput';
 import { supabase } from '../lib/supabase'; // افتراض: إضافة import لـ supabase للعمليات
+import { DateInput } from './DateInput';
 import { authService } from '../lib/auth'; // إضافة: استيراد authService للتحقق من الصلاحيات
+import { DateInput } from './DateInput';
 // إضافة: API Key للـ AI (يجب تعيينه في environment variables كـ VITE_ATLASCLOUD_API_KEY)
 const ATLASCLOUD_API_KEY = import.meta.env.VITE_ATLASCLOUD_API_KEY || '';
 const NewOrders: React.FC = () => {

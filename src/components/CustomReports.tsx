@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { DateInput } from './DateInput';
 import {
   FileText, Download, Eye, X, ChevronDown, Calendar, Filter, FileSpreadsheet, Loader2
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { DateInput } from './DateInput';
 import {
   exportInventoryToExcel, exportInventoryToPDF,
   exportPaymentMethodsToExcel, exportPaymentMethodsToPDF,
@@ -12,9 +14,13 @@ import {
   exportEmployeeBalancesToExcel, exportEmployeeBalancesToPDF
 } from '../lib/allExports';
 import { exportToExcel, exportToPDF, formatCurrency, formatDate } from '../lib/exportUtils';
+import { DateInput } from './DateInput';
 import toast, { Toaster } from 'react-hot-toast';
+import { DateInput } from './DateInput';
 import html2canvas from 'html2canvas';
+import { DateInput } from './DateInput';
 import jsPDF from 'jspdf';
+import { DateInput } from './DateInput';
 
 interface ReportType {
   id: string;

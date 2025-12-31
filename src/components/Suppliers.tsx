@@ -1,18 +1,27 @@
 // src/components/Suppliers.tsx
 import React, { useState, useEffect } from 'react';
+import { DateInput } from './DateInput';
 import {
   Search, Building2, DollarSign, ArrowLeft, Plus,
   Edit2, Save, MapPin, Phone, Mail, Trash2, Wallet, AlertCircle,
   Download, FileText, Eye, TrendingUp, User, Clock
 } from 'lucide-react';
 import { useReceivables } from '../hooks/useReceivables';
+import { DateInput } from './DateInput';
 import { authService } from "../lib/auth";
+import { DateInput } from './DateInput';
 import { supabase } from "../lib/supabase";
+import { DateInput } from './DateInput';
 import ExcelJS from 'exceljs';
+import { DateInput } from './DateInput';
 import { saveAs } from 'file-saver';
+import { DateInput } from './DateInput';
 import html2canvas from 'html2canvas';
+import { DateInput } from './DateInput';
 import jsPDF from 'jspdf';
+import { DateInput } from './DateInput';
 import toast from 'react-hot-toast';
+import { DateInput } from './DateInput';
 
 const Suppliers: React.FC = () => {
   const {

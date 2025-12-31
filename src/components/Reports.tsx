@@ -1,15 +1,27 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { DateInput } from './DateInput';
 import { FileText, Download, Calendar, DollarSign, TrendingUp, TrendingDown, Eye, Package, Truck, CreditCard, Tag, Clock, AlertTriangle, XCircle, BarChart3, Loader2 } from 'lucide-react';
+import { DateInput } from './DateInput';
 import ExcelJS from 'exceljs';
+import { DateInput } from './DateInput';
 import { saveAs } from 'file-saver';
+import { DateInput } from './DateInput';
 import html2canvas from 'html2canvas'; // Import html2canvas
+import { DateInput } from './DateInput';
 import { jsPDF } from 'jspdf'; // Import jsPDF
+import { DateInput } from './DateInput';
 import { supabase } from '../lib/supabase';
+import { DateInput } from './DateInput';
 import { useOrders } from '../hooks/useOrders';
+import { DateInput } from './DateInput';
 import { useExpenses } from '../hooks/useExpenses';
+import { DateInput } from './DateInput';
 import { Order, Product } from '../types/order';
+import { DateInput } from './DateInput';
 import { Expense } from '../types/expense';
+import { DateInput } from './DateInput';
 import ReactECharts from 'echarts-for-react';
+import { DateInput } from './DateInput';
 interface PaymentMethod {
   id: string;
   name: string;
@@ -1363,9 +1375,9 @@ const Reports: React.FC = () => {
           </div>
           {dateRange === 'custom' && (
             <div className="flex items-center gap-2 w-full lg:w-auto">
-              <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="px-2 py-2 border border-gray-300 rounded text-sm flex-1 focus:ring-2 focus:ring-blue-500" />
+              <DateInput value={startDate} onChange={(e) => setStartDate(e.target.value)} className="px-2 py-2 border border-gray-300 rounded text-sm flex-1 focus:ring-2 focus:ring-blue-500" />
               <span className="text-gray-600 font-medium text-sm whitespace-nowrap">إلى</span>
-              <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="px-2 py-2 border border-gray-300 rounded text-sm flex-1 focus:ring-2 focus:ring-blue-500" />
+              <DateInput value={endDate} onChange={(e) => setEndDate(e.target.value)} className="px-2 py-2 border border-gray-300 rounded text-sm flex-1 focus:ring-2 focus:ring-blue-500" />
             </div>
           )}
           {/* Export Buttons */}

@@ -1,11 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { DateInput } from './DateInput';
 import { Plus, CreditCard as Edit, Trash2, Calendar, DollarSign, Tag, FileText, TrendingUp, Search, Download, List } from 'lucide-react';
+import { DateInput } from './DateInput';
 import { supabase } from '../lib/supabase';
+import { DateInput } from './DateInput';
 import { authService } from '../lib/auth';
+import { DateInput } from './DateInput';
 import ExcelJS from 'exceljs';
+import { DateInput } from './DateInput';
 import { saveAs } from 'file-saver';
+import { DateInput } from './DateInput';
 import html2canvas from 'html2canvas';
+import { DateInput } from './DateInput';
 import jsPDF from 'jspdf';
+import { DateInput } from './DateInput';
 
 interface Expense {
   id: string;

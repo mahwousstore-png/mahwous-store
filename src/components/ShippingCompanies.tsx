@@ -1,11 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { DateInput } from './DateInput';
 import { Truck, TrendingUp, Search, Download, FileText, Eye, DollarSign, Plus, X as CloseIcon, Save } from 'lucide-react';
+import { DateInput } from './DateInput';
 import toast from 'react-hot-toast';
+import { DateInput } from './DateInput';
 import { supabase } from '../lib/supabase';
+import { DateInput } from './DateInput';
 import ExcelJS from 'exceljs';
+import { DateInput } from './DateInput';
 import { saveAs } from 'file-saver';
+import { DateInput } from './DateInput';
 import html2canvas from 'html2canvas';
+import { DateInput } from './DateInput';
 import jsPDF from 'jspdf';
+import { DateInput } from './DateInput';
 
 interface ShippingCompanyStats {
   company: string;

@@ -1,12 +1,21 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { DateInput } from './DateInput';
 import { X, DollarSign, TrendingUp, Search, Download, FileText, Trash2, Filter } from 'lucide-react';
+import { DateInput } from './DateInput';
 import { supabase } from '../lib/supabase';
+import { DateInput } from './DateInput';
 import ExcelJS from 'exceljs';
+import { DateInput } from './DateInput';
 import { saveAs } from 'file-saver';
+import { DateInput } from './DateInput';
 import html2canvas from 'html2canvas';
+import { DateInput } from './DateInput';
 import jsPDF from 'jspdf';
+import { DateInput } from './DateInput';
 import toast from 'react-hot-toast';
+import { DateInput } from './DateInput';
 import { authService } from '../lib/auth';
+import { DateInput } from './DateInput';
 
 interface CancelledOrder {
   id: string;
