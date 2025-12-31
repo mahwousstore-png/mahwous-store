@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Mail, Lock, AlertCircle, Eye, EyeOff, Shield, FileText, BarChart3, LogIn, Settings } from 'lucide-react';
+import { Mail, Lock, AlertCircle, Eye, EyeOff, Shield, FileText, BarChart3, LogIn } from 'lucide-react';
 import { authService, LoginCredentials } from '../lib/auth';
-import { isSupabaseConfigured } from '../lib/supabase';
 
 interface LoginPageProps {
   onLoginSuccess: () => void;
@@ -61,32 +60,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 animate-gradient"></div>
       </div>
-
-      {/* رسالة خطأ التكوين */}
-      {!isSupabaseConfigured && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Settings className="w-8 h-8 text-amber-600" />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">إعداد قاعدة البيانات مطلوب</h2>
-              <p className="text-gray-600 mb-6 text-sm sm:text-base leading-relaxed">
-                لم يتم تكوين متغيرات البيئة الخاصة بـ Supabase بشكل صحيح. يجب تعيين القيم الصحيحة لـ:
-              </p>
-              <div className="bg-gray-50 rounded-xl p-4 text-right mb-6">
-                <code className="block text-sm text-gray-700 mb-2 font-mono">VITE_SUPABASE_URL</code>
-                <code className="block text-sm text-gray-700 font-mono">VITE_SUPABASE_ANON_KEY</code>
-              </div>
-              <p className="text-sm text-gray-500">
-                يمكن الحصول على هذه القيم من لوحة تحكم Supabase تحت:
-                <br />
-                <strong>Settings → API</strong>
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* البطاقة الرئيسية */}
       <div className="relative w-full max-w-4xl mx-auto bg-white/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-white/20">
