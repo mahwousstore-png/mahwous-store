@@ -1,0 +1,469 @@
+/* ===================================
+   تحسينات الألوان والرؤية لنظام مهووس برو
+   =================================== */
+
+/* === 1. تحسين الخطوط والأحجام === */
+body {
+  font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* تكبير الأرقام المهمة */
+.stat-number,
+.balance-amount,
+.total-amount {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em;
+}
+
+/* تحسين قراءة النصوص */
+.text-lg {
+  font-size: 1.25rem !important;
+}
+
+.text-xl {
+  font-size: 1.5rem !important;
+}
+
+.text-2xl {
+  font-size: 2rem !important;
+}
+
+.text-3xl {
+  font-size: 2.5rem !important;
+}
+
+/* === 2. تحسين التباين === */
+
+/* خلفيات أفتح للبطاقات */
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.bg-gray-50 {
+  background-color: #f9fafb !important;
+}
+
+.bg-gray-100 {
+  background-color: #f3f4f6 !important;
+}
+
+/* نصوص أغمق للقراءة الأفضل */
+.text-gray-900 {
+  color: #111827 !important;
+}
+
+.text-gray-800 {
+  color: #1f2937 !important;
+}
+
+.text-gray-700 {
+  color: #374151 !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+/* === 3. ألوان الحالات المحسّنة === */
+
+/* أخضر للإيجابي */
+.text-green-600 {
+  color: #059669 !important;
+}
+
+.bg-green-50 {
+  background-color: #ecfdf5 !important;
+}
+
+.bg-green-100 {
+  background-color: #d1fae5 !important;
+}
+
+.bg-green-600 {
+  background-color: #059669 !important;
+}
+
+/* أحمر للسلبي */
+.text-red-600 {
+  color: #dc2626 !important;
+}
+
+.bg-red-50 {
+  background-color: #fef2f2 !important;
+}
+
+.bg-red-100 {
+  background-color: #fee2e2 !important;
+}
+
+.bg-red-600 {
+  background-color: #dc2626 !important;
+}
+
+/* أزرق للمعلومات */
+.text-blue-600 {
+  color: #2563eb !important;
+}
+
+.bg-blue-50 {
+  background-color: #eff6ff !important;
+}
+
+.bg-blue-100 {
+  background-color: #dbeafe !important;
+}
+
+.bg-blue-600 {
+  background-color: #2563eb !important;
+}
+
+/* ذهبي للتميز */
+.text-gold {
+  color: #D4AF37 !important;
+}
+
+.bg-gold {
+  background-color: #D4AF37 !important;
+}
+
+.border-gold {
+  border-color: #D4AF37 !important;
+}
+
+/* برتقالي للتحذير */
+.text-orange-600 {
+  color: #ea580c !important;
+}
+
+.bg-orange-50 {
+  background-color: #fff7ed !important;
+}
+
+.bg-orange-100 {
+  background-color: #ffedd5 !important;
+}
+
+/* === 4. تحسين الجداول === */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+thead th {
+  background-color: #1f2937 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  padding: 1rem !important;
+  border-bottom: 2px solid #D4AF37 !important;
+}
+
+tbody tr {
+  background-color: #ffffff;
+  transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+  background-color: #f9fafb !important;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+tbody tr:nth-child(even):hover {
+  background-color: #f3f4f6 !important;
+}
+
+tbody td {
+  padding: 0.875rem !important;
+  font-size: 0.9375rem !important;
+  color: #1f2937 !important;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* === 5. تحسين البطاقات === */
+.card {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* === 6. تحسين الأزرار === */
+button {
+  font-weight: 600 !important;
+  transition: all 0.2s !important;
+  border-radius: 0.5rem !important;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* === 7. تحسين الشارات (Badges) === */
+.badge {
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge-success {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.badge-danger {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.badge-warning {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+.badge-info {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* === 8. تحسين النماذج === */
+input,
+select,
+textarea {
+  border: 2px solid #d1d5db !important;
+  border-radius: 0.5rem !important;
+  padding: 0.625rem 0.875rem !important;
+  font-size: 1rem !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1) !important;
+}
+
+/* === 9. تحسين الأيقونات === */
+svg {
+  flex-shrink: 0;
+}
+
+/* === 10. تحسين الظلال === */
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* === 11. تحسين الحدود === */
+.border {
+  border-width: 1px !important;
+  border-color: #e5e7eb !important;
+}
+
+.border-2 {
+  border-width: 2px !important;
+}
+
+/* === 12. تحسين الفلاتر === */
+.filter-button {
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  border: 2px solid #e5e7eb;
+  background-color: #ffffff;
+  color: #4b5563;
+}
+
+.filter-button:hover {
+  border-color: #D4AF37;
+  color: #D4AF37;
+  background-color: #fffbeb;
+}
+
+.filter-button.active {
+  border-color: #D4AF37;
+  background-color: #D4AF37;
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(212, 175, 55, 0.3);
+}
+
+/* === 13. تحسين الإشعارات === */
+.toast {
+  border-radius: 0.75rem !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  font-weight: 600 !important;
+}
+
+/* === 14. تحسين Loading === */
+.loading-spinner {
+  border: 3px solid #f3f4f6;
+  border-top-color: #D4AF37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* === 15. تحسين الانتقالات === */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === 16. تحسين التمرير === */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8941f;
+}
+
+/* === 17. تحسين الطباعة === */
+@media print {
+  * {
+    color: #000000 !important;
+    background: #ffffff !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* === 18. تحسين الوضع الداكن (للمستقبل) === */
+@media (prefers-color-scheme: dark) {
+  /* سيتم إضافة دعم الوضع الداكن لاحقاً */
+}
+
+/* === 19. تحسين الأرقام الكبيرة === */
+.big-number {
+  font-size: 3rem !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #D4AF37 0%, #b8941f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === 20. تحسين العناوين === */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700 !important;
+  color: #111827 !important;
+  line-height: 1.2 !important;
+}
+
+h1 {
+  font-size: 2.25rem !important;
+}
+
+h2 {
+  font-size: 1.875rem !important;
+}
+
+h3 {
+  font-size: 1.5rem !important;
+}
+
+/* === 21. تحسين المسافات === */
+.space-y-4 > * + * {
+  margin-top: 1rem !important;
+}
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem !important;
+}
+
+/* === 22. تحسين الروابط === */
+a {
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* === 23. تحسين التركيز === */
+*:focus {
+  outline: 2px solid #D4AF37;
+  outline-offset: 2px;
+}
+
+/* === 24. تحسين الحالات المعطلة === */
+button:disabled,
+input:disabled,
+select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* === 25. تحسين الرسوم المتحركة === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
