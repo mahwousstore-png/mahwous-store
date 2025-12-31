@@ -16,6 +16,17 @@ interface Expense {
   created_by?: string;
   created_at?: string;
   updated_at?: string;
+  status?: 'pending' | 'approved' | 'rejected';
+  approved_by?: string;
+  approved_at?: string;
+  employee_balance_transaction_id?: string;
+  created_by_user?: {
+    full_name: string;
+    email: string;
+  };
+  approved_by_user?: {
+    full_name: string;
+  };
 }
 
 interface Category {
