@@ -629,7 +629,8 @@ const NewOrders: React.FC = () => {
             amount: cancelFormData.fee,
             category: 'رسوم إلغاء', // فئة افتراضية، يمكن تخصيص
             date: new Date().toISOString().split('T')[0],
-            created_by: 'إلغاء طلب'
+            created_by: 'إلغاء طلب',
+            status: 'approved'
           }]);
         if (expenseError) {
           console.error('فشل في إضافة المصروف:', expenseError);
