@@ -3,6 +3,8 @@
 -- Run this in Supabase SQL Editor if you get "Could not find the 'status' column" error
 
 -- Add status column if it doesn't exist
+-- Note: Default is 'approved' because the review system has been cancelled
+-- All expenses are auto-approved as per business requirements
 DO $$ 
 BEGIN
     IF NOT EXISTS (
@@ -59,6 +61,9 @@ BEGIN
 END $$;
 
 -- Add employee_balance_transaction_id column if it doesn't exist
+-- Note: This column references employee_balance_transactions table
+-- A foreign key constraint is not added here to maintain backward compatibility
+-- and avoid errors if the referenced table doesn't exist yet
 DO $$ 
 BEGIN
     IF NOT EXISTS (
