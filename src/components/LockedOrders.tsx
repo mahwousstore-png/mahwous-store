@@ -415,6 +415,8 @@ const LockedOrders: React.FC = () => {
             amount: cancelFormData.fee,
             category: 'رسوم إلغاء',
             date: new Date().toISOString().split('T')[0],
+            created_by: 'إلغاء طلب',
+            status: 'approved'
           }]);
         if (expenseError) {
           console.error('فشل في إضافة المصروف:', expenseError);
