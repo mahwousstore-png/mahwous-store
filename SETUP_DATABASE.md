@@ -128,5 +128,24 @@ EXECUTE FUNCTION update_expenses_updated_at();
 - الـ Indexes تحسن الأداء بشكل كبير
 - الـ Triggers تعمل تلقائياً
 
+## إصلاح خطأ "Could not find the 'status' column"
+
+إذا واجهت خطأ يقول `Could not find the 'status' column of 'expenses' in the schema cache`، فهذا يعني أن جدول `expenses` في قاعدة البيانات لا يحتوي على عمود `status` والأعمدة المرتبطة به.
+
+### الحل: تشغيل Migration
+
+1. افتح SQL Editor في Supabase
+2. افتح ملف `migration_add_status_to_expenses.sql`
+3. انسخ محتوى الملف بالكامل والصقه في SQL Editor
+4. اضغط Run
+5. تأكد من ظهور رسائل النجاح
+6. قم بتحديث صفحة التطبيق (Refresh)
+
+هذا الـ Migration سيضيف الأعمدة التالية إلى جدول `expenses` إذا لم تكن موجودة:
+- `status` - حالة المصروف (pending, approved, rejected)
+- `approved_by` - من قام بالموافقة
+- `approved_at` - تاريخ الموافقة
+- `employee_balance_transaction_id` - ربط مع معاملة العهدة
+
 ## دعم
 للمساعدة أو الاستفسارات، تواصل معنا.
