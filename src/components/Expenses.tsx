@@ -423,7 +423,8 @@ const Expenses: React.FC = () => {
 
         const expenseToInsert = {
           ...expenseData,
-          created_by: createdBy
+          created_by: createdBy,
+          status: 'approved' // تم إلغاء نظام المراجعة - يتم الموافقة تلقائياً
         };
 
         console.log('💾 Inserting expense:', expenseToInsert);

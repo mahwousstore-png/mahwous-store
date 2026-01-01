@@ -270,7 +270,7 @@ const EmployeeAdvances: React.FC = () => {
     }
 
     try {
-      // 1. إضافة المصروف في جدول المصروفات
+      // 1. إضافة المصروف في جدول المصروفات مع حالة موافقة تلقائية
       const { data: expenseResult, error: expenseError } = await supabase
         .from('expenses')
         .insert([{
@@ -278,7 +278,8 @@ const EmployeeAdvances: React.FC = () => {
           amount: amount,
           category: expenseCategory,
           date: expenseDate,
-          created_by: currentUser.full_name || currentUser.email || 'غير معروف'
+          created_by: currentUser.full_name || currentUser.email || 'غير معروف',
+          status: 'approved' // تم إلغاء نظام المراجعة - يتم الموافقة تلقائياً
         }])
         .select()
         .single();
